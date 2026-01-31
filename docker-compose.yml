@@ -6,6 +6,7 @@ volumes:
   n8n_storage:
   postgres_storage:
   qdrant_storage:
+  letta_storage:
   searxng_storage:
 
 # ─────────────── Network ───────────────
@@ -219,6 +220,16 @@ services:
     volumes:
       - qdrant_storage:/qdrant/storage
 
+  # ---- Letta ----
+  letta:
+    image: letta/letta:latest
+    container_name: letta
+    restart: unless-stopped
+    networks: [ollama-net]
+    ports:
+      - "${LETTA_PORT:-8283}:8283"
+    volumes:
+      - letta_storage:/data
   # ---- SearXNG ----
   searxng:
     image: searxng/searxng:latest
