@@ -13,6 +13,7 @@ LLMs, orchestration, data stores, and optional UI tooling.
   integrations.
 - **Postgres**: Persistent database backing n8n workflows.
 - **Qdrant**: Vector database for embeddings and retrieval use cases.
+- **Letta**: Agent runtime and server for stateful assistants.
 
 ### Applications
 - **Browser-Use WebUI**: A web UI + VNC stack that connects to the Ollama
@@ -50,9 +51,10 @@ Commonly exposed ports include:
   `9222` (Chrome debugging)
 - **n8n**: `5678`
 - **Qdrant**: `6333`
+- **Letta**: `8283` (or `${LETTA_PORT}` if set)
 
 ## Environment configuration
 Populate `.env` with the values referenced in `docker-compose.yml` (for example
-`SUBNET_ADDRESS`, `OLLAMA_PORT`, `POSTGRES_*`, `N8N_*`, and Discord/Redis
-settings). These variables drive port bindings, IP assignments, and application
-credentials.
+`SUBNET_ADDRESS`, `OLLAMA_PORT`, `LETTA_PORT`, `POSTGRES_*`, `N8N_*`, and
+Discord/Redis settings). These variables drive port bindings, IP assignments,
+and application credentials.

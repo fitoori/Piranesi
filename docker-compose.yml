@@ -6,6 +6,7 @@ volumes:
   n8n_storage:
   postgres_storage:
   qdrant_storage:
+  letta_storage:
 
 # ─────────────── Network ───────────────
 networks:
@@ -217,6 +218,17 @@ services:
       - "6333:6333"
     volumes:
       - qdrant_storage:/qdrant/storage
+
+  # ---- Letta ----
+  letta:
+    image: letta/letta:latest
+    container_name: letta
+    restart: unless-stopped
+    networks: [ollama-net]
+    ports:
+      - "${LETTA_PORT:-8283}:8283"
+    volumes:
+      - letta_storage:/data
 
   # ---- Helper: pull devstral (idempotent) ----
   ollama-pull-devstral:
