@@ -45,13 +45,20 @@ Persistent data is stored in named Docker volumes:
 - `discord` for the Discord bot workspace
 
 ## Ports exposed to the host
-Commonly exposed ports include:
-- **Ollama**: `${OLLAMA_PORT}`
+Each service below lists the host port(s) that are bound in `docker-compose.yml`
+so you know exactly where to connect from your machine.
+
 - **Browser-Use WebUI**: `7788` (web UI), `6080` (noVNC), `5901` (VNC),
-  `9222` (Chrome debugging)
-- **n8n**: `5678`
-- **Qdrant**: `6333`
-- **Letta**: `8283` (or `${LETTA_PORT}` if set)
+  `9222` (Chrome debugging).
+- **Ollama**: `${OLLAMA_PORT}` (container listens on the same port).
+- **Redis**: `${REDIS_PORT}` (container listens on the same port).
+- **Postgres**: `5432`.
+- **n8n**: `5678`.
+- **Qdrant**: `6333`.
+- **Letta**: `${LETTA_PORT:-8283}` → `8283` in the container (defaults to `8283`
+  on the host if `LETTA_PORT` is unset).
+- **SearXNG**: `8080`.
+- **Discord bot**: no host port binding (outbound-only service).
 
 ## Environment configuration
 Populate `.env` with the values referenced in `docker-compose.yml` (for example
