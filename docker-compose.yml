@@ -6,6 +6,7 @@ volumes:
   n8n_storage:
   postgres_storage:
   qdrant_storage:
+  searxng_storage:
 
 # ─────────────── Network ───────────────
 networks:
@@ -217,6 +218,19 @@ services:
       - "6333:6333"
     volumes:
       - qdrant_storage:/qdrant/storage
+
+  # ---- SearXNG ----
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    restart: unless-stopped
+    networks: [ollama-net]
+    ports:
+      - "8080:8080"
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8080/
+    volumes:
+      - searxng_storage:/etc/searxng
 
   # ---- Helper: pull devstral (idempotent) ----
   ollama-pull-devstral:
