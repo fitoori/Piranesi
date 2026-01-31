@@ -65,3 +65,7 @@ Populate `.env` with the values referenced in `docker-compose.yml` (for example
 `SUBNET_ADDRESS`, `OLLAMA_PORT`, `LETTA_PORT`, `POSTGRES_*`, `N8N_*`, and
 Discord/Redis settings). These variables drive port bindings, IP assignments,
 and application credentials.
+
+Optional image overrides (useful if you host your own images):
+- `BROWSER_USE_WEBUI_IMAGE` (defaults to `browser-use/webui:latest`)
+- `DISCORD_IMAGE` (defaults to `kevinthedang/discord-ollama:latest`)

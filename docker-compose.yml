@@ -43,11 +43,7 @@ x-n8n: &service-n8n
 services:
   # ---- Browser-Use WebUI (uses Ollama in this stack) ----
   browser-use-webui:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        TARGETPLATFORM: ${TARGETPLATFORM:-linux/amd64}
+    image: ${BROWSER_USE_WEBUI_IMAGE:-browser-use/webui:latest}
     container_name: browser-use-webui
     restart: unless-stopped
     ports:
@@ -99,8 +95,7 @@ services:
 
   # ---- Discord Bot ----
   discord:
-    build: ./
-    image: kevinthedang/discord-ollama:latest
+    image: ${DISCORD_IMAGE:-kevinthedang/discord-ollama:latest}
     container_name: discord
     restart: unless-stopped
     environment:
