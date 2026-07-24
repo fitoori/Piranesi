@@ -1,3 +1,14 @@
+> ## ⚠️ Archived — not the canonical copy
+>
+> The canonical repository is **[KuriGohan-Kamehameha/Piranesi](https://github.com/KuriGohan-Kamehameha/Piranesi)**.
+>
+> This copy is read-only. Its history is preserved in the canonical repo on the `archive/fitoori-main`
+> branch, and its one branch with unmerged work on `archive/fitoori-codex-postgres-env`.
+> The two copies shared logical commits but with rewritten SHAs (no common git ancestor), so they could
+> not be merged; they were consolidated by selecting the copy with the fuller tree and archiving this one (2026-07-23).
+
+---
+
 # Piranesi
 
 This repository defines a Docker Compose stack for a personalized AI assistant
